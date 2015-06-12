@@ -1,0 +1,142 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <title>자제관리 솔루션</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+		minimum-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+
+    <link rel="stylesheet" href="src/common/style/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="src/common/style/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="src/common/style/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="src/common/style/css/material.css" />
+
+
+
+    <script src="vendor/jquery/dist/jquery.js"></script>
+    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+
+<!--모듈 명은 ng-app 으로 명시-->
+<!-- 컨트롤러 명은 ng-controller 로 명시-->
+<!--루트 모듈이자 루트 컨트롤러로 MainCrtrl 은 아래쪽에 링크하였음-->
+
+<body ng-app="eventApp" ng-controller="MainCtrl" ng-clock>
+
+
+<div ng-if="layout==1">
+    <div ng-include="'src/app/html/010-00-main/010-01-login.html'"></div>
+</div>
+
+
+
+<div ng-if="layout==3">
+    <div ng-include="'src/app/html/010-00-main/010-02-main-b.html'"></div>
+</div>
+
+
+
+
+<div ng-if="layout==2">
+<div ng-include="'src/app/html/header-m.html'" ng-hide="main_type ==1"></div>
+<div>
+    <div ng-view=""></div>
+</div>
+<div ng-include="'src/app/html/footer-m.html'" ng-hide="main_type ==1"></div>
+</div>
+
+
+
+
+<!-- build:js(app) scripts/vendor.js -->
+<!-- bower:js -->
+
+
+<script src="vendor/es5-shim/es5-shim.js"></script>
+<script src="vendor/angular/angular.js"></script>
+<script src="https://rawgit.com/grevory/angular-local-storage/master/dist/angular-local-storage.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js"></script>
+<script src="vendor/json3/lib/json3.min.js"></script>
+<script src="vendor/angular-resource/angular-resource.js"></script>
+<script src="vendor/angular-cookies/angular-cookies.js"></script>
+<script src="vendor/angular-sanitize/angular-sanitize.js"></script>
+<script src="vendor/angular-route/angular-route.js"></script>
+<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="vendor/jquery.number.min.js"></script>
+<!--<script src="vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>-->
+
+
+<script src="vendor/services/angular-file-upload.min.js"></script>
+<script src="vendor/services/angular-file-upload-shim.js"></script>
+
+
+<script src="src/common/directives/app.js"></script>
+<script src="src/common/directives/dbConnectService.js"></script>
+<script src="src/common/directives/main.js"></script>
+<script src="src/common/directives/header.js"></script>
+<script src="src/common/directives/footer-m.js"></script>
+
+
+<script src="src/app/html/010-00-main/010-00-main.js"></script>
+<script src="src/app/html/010-00-main/010-01-login.js"></script>
+<script src="src/app/html/010-00-main/010-02-main-b.js"></script>
+<script src="src/app/html/020-00-stockList/020-00-stockList.js"></script>
+
+<script src="src/app/html/020-00-stockList/020-02-insertNew.js"></script>
+
+
+
+<script src="src/app/html/030-00-returnList/030-00-returnList.js"></script>
+<script src="src/app/html/030-00-returnList/030-01-reNew.js"></script>
+<script src="src/app/html/030-00-returnList/030-02-insertReturn.js"></script>
+<script src="src/app/html/030-00-returnList/030-02-selectBusiness.js"></script>
+<script src="src/app/html/030-00-returnList/030-03-reNewbusiness.js"></script>
+<script src="src/app/html/030-00-returnList/030-04-returnConfirm01.js"></script>
+<script src="src/app/html/030-00-returnList/030-04-returnConfirm02.js"></script>
+<script src="src/app/html/040-00-releaseList/040-00-releaseList.js"></script>
+
+<script src="src/app/html/040-00-releaseList/040-02-insertReturn.js"></script>
+<script src="src/app/html/050-00-inventoryList/050-00-inventoryList.js"></script>
+<script src="src/app/html/050-00-inventoryList/050-01-inventoryCheck.js"></script>
+
+
+<script src="src/app/html/060-00-inoutHistory/060-00-inoutHistory01.js"></script>
+<script src="src/app/html/060-00-inoutHistory/060-01-inoutHistory02.js"></script>
+<script src="src/app/html/060-00-inoutHistory/060-02-inoutHistory03.js"></script>
+<script src="src/app/html/060-00-inoutHistory/060-03-inoutHistory04.js"></script>
+
+
+<script src="src/app/html/070-00-notice/070-00-notice.js"></script>
+<script src="src/app/html/070-00-notice/070-01-noticeWrite.js"></script>
+
+
+<script src="src/app/html/080-00-product_manger/080-00-product_manger.js"></script>
+
+<script src="src/app/html/090-00-company_manager/090-00-company_manager.js"></script>
+
+
+
+
+
+
+<!--<script src="vendor/services/dbConnectService.js"></script>-->
+
+
+<!-- endbuild -->
+</body>
+</html>

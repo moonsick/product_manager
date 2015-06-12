@@ -1,0 +1,51 @@
+<div ng-controller="notice_Ctr">
+
+    <div class="c-wrap">
+        <div class="container sub-contents">
+
+            <accordion close-others="true" class="panel panel-default notice-acodian">
+
+                <accordion-group is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled" ng-hide="notice_list[0].name=='error'">
+                    <accordion-heading class="panel-heading" style="padding:0;">
+                        <h4 class="panel-title notice-t">
+                            <a class="collapsed">
+                                <span ng-show="notice_list[0].notice_commend.length<25" class="col-xs-8 no-padding">{{notice_list[0].notice_commend}}</span>
+                                <span ng-show="notice_list[0].notice_commend.length>25" class="col-xs-8 no-padding">{{notice_list[0].notice_commend.slice(0,25)+"..."}}</span>
+                                <span class="col-xs-4 no-padding text-right n-date">{{notice_list[0].insert_date.slice(0,10)}}</span>
+                            </a></h4>
+                    </accordion-heading>
+                            <span class="panel-body-style">
+                                {{notice_list[0].notice_commend}}
+                            </span>
+                </accordion-group>
+
+                <accordion-group ng-repeat="notice_list in notice_list" ng-hide="$index == 0 || notice_list[0].name=='error'">
+                    <accordion-heading class="panel-heading" style="padding:0;">
+                        <h4 class="panel-title notice-t">
+                            <a class="collapsed">
+                                <span ng-show="notice_list.notice_commend.length<25" class="col-xs-8 no-padding">{{notice_list.notice_commend}}</span>
+                                <span ng-show="notice_list.notice_commend.length>25" class="col-xs-8 no-padding">{{notice_list.notice_commend.slice(0,25)+"..."}}</span>
+                                <span class="col-xs-4 no-padding text-right n-date">{{notice_list.insert_date.slice(0,10)}}</span>
+                            </a></h4>
+                    </accordion-heading>
+                            <span class="panel-body-style">
+                                {{notice_list.notice_commend}}
+                            </span>
+                </accordion-group>
+            </accordion>
+            <div class="col-xs-12 no-padding text-right" style="margin-bottom:12px;">
+                <button class="btn btn-blue" ng-click="notice_insert_move();">글쓰기</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+</div>

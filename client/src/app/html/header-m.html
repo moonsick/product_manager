@@ -1,0 +1,101 @@
+<div ng-controller="header">
+
+<header>
+    <div class="container main-padding">
+        <div class="col-xs-2 no-padding top-logo pull-left">
+            <a href="#" ng-click="header_home();"><img src="/src/assets/img/snERP-logo.png" alt="snERP"></a>
+        </div>
+        <div class="col-xs-6 no-padding">
+            <h1 class="page-title">{{header_title}}</h1>
+        </div>
+        <div class="col-xs-2 pull-right no-padding">
+            <a href="#" class="pull-right navicon"  data-toggle="modal" data-target="#myModal"><i class="fa fa-bars"></i></a>
+        </div>
+    </div>
+</header>
+
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <div class="modal-content manu-md">
+                <div class="col-xs-12 m-header" style="overflow:hidden;">
+                    <a href="#" ng-click="main();" data-dismiss="modal"><i class="fa fa-home fa-2x pull-left"> </i></a>
+
+
+                </div>
+                <div class="modal-body modal-menu">
+
+                    <div class="col-xs-4 main-padding">
+                        <button class="btn btn-main btn-block" data-dismiss="modal" ng-click="stockList();">
+                            <i class="fa fa-pencil-square-o fa-2x"></i>
+                            <br>
+                            입고 입력
+                        </button>
+                        <span class="label label-danger label-n" ng-show="in_new[0].name !=='error'">N</span>
+                    </div>
+                    <div class="col-xs-4 main-padding">
+                        <button class="btn btn-main btn-block" data-dismiss="modal" ng-click="releaseList();">
+                            <i class="fa fa-sign-out fa-2x"></i>
+                            <br>
+                            출고 입력
+                        </button>
+                        <span class="label label-danger label-n" ng-show="out_new[0].name !=='error'">N</span>
+                    </div>
+                    <!--<div class="col-xs-4 main-padding">
+                        <button class="btn btn-main btn-block" data-dismiss="modal" ng-click="returnList();">
+                            <i class="fa fa-archive fa-2x"></i>
+                            <br>
+                            반품 입력
+                        </button>
+                    </div>-->
+                    <div class="col-xs-4 main-padding">
+                        <button class="btn btn-main btn-block" data-dismiss="modal" ng-click="inventoryList();">
+                            <i class="fa fa-book fa-2x"></i>
+                            <br>
+                            재고 보기
+                        </button>
+                    </div>
+                    <div class="col-xs-4 main-padding">
+                        <button class="btn btn-main btn-block" data-dismiss="modal" ng-click="inoutHistory01();">
+                            <i class="fa fa-history fa-2x"></i>
+                            <br>
+                            출/입고 내역
+                        </button>
+                        <span class="label label-danger label-n" ng-show="in_new[0].name !=='error' || out_new[0].name !=='error'">N</span>
+                    </div>
+                    <div class="col-xs-4 main-padding">
+                        <button class="btn btn-main btn-block" data-dismiss="modal" ng-click="product_manager();">
+                            <i class="fa fa-cubes fa-2x"></i>
+                            <br>
+                            물품 관리
+                        </button>
+                    </div>
+                    <div class="col-xs-4 main-padding">
+                        <button class="btn btn-main btn-block" data-dismiss="modal" ng-click="company_manager();">
+                            <i class="fa fa-tasks fa-2x"></i>
+                            <br>
+                            거래처 관리
+                        </button>
+                    </div>
+                    <div class="col-xs-12 main-padding" style="overflow:hidden;">
+                        <button class="btn btn-main btn-lg btn-block" data-dismiss="modal" ng-click="notice();">
+                            <i class="fa fa-volume-up fa-lg"></i> 알림사항
+                        </button>
+                        <span class="label label-danger label-n" ng-show="notice_new[0].name !=='error'">N</span>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" ng-click="log_out();" data-dismiss="modal"><p class="pull-left log-out"><button class="btn btn-info">로그아웃</button></p></a>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <button class="btn btn-success btn-sm pull-right" ng-click="main_mod_change(3);" data-dismiss="modal" style="margin-right: 15px;">typeB</button>
+                        <button class="btn btn-success btn-sm pull-right" ng-click="main_mod_change(2);" data-dismiss="modal" style="margin-right: 10px;">typeA</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

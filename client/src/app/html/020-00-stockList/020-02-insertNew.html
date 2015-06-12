@@ -1,0 +1,136 @@
+<div ng-controller="insertNew_Ctr">
+
+
+    <div class="c-wrap">
+        <div class="container sub-contents">
+            <h3 class="pd-insert-tt m-header" ng-click="stockList_go();"><i class="fa fa-caret-right"></i> <span>{{product_name}}</span> 입고</h3>
+            <div class="select" ng-click="company_select('yes');"><p>{{company_name}}
+                <input id="company_id" value="false" class="hidden">
+                <span class="pull-right"><i class="fa fa-caret-down"></i></span></p></div>
+            <div class="col-xs-6 no-padding" style="padding-right:5px;">
+                <p class="num-bg" ng-click="product_count_click();">입고수량</p>
+                <div class="form-control input-style" ng-class="{'active' : count_click==0}" ng-click="product_count_click();"> {{product_count}} </div>
+                <!--<input class="form-control">-->
+            </div>
+            <div class="col-xs-6 no-padding" style="padding-left:5px;">
+                <p class="num-bg" ng-click="product_cost_click();">입고단가</p>
+                <div class="form-control input-style text-right" ng-class="{'active' : cost_click==0}" ng-click="product_cost_click();"><i class="fa fa-krw"></i> {{product_cost}} </div>
+                <!--<input class="form-control">-->
+            </div>
+            <!--키패드-->
+            <div class="col-xs-12 no-padding" style="overflow:hidden;">
+                <table class="table-bordered text-center table-key">
+                    <tr>
+                        <td><button class="key-btn"ng-click="number_click(1);">1</button></td><td><button class="key-btn" ng-click="number_click(2);">2</button></td><td><button class="key-btn" ng-click="number_click(3);">3</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="key-btn" ng-click="number_click(4);">4</button></td><td><button class="key-btn" ng-click="number_click(5);">5</button></td><td><button class="key-btn" ng-click="number_click(6);">6</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="key-btn" ng-click="number_click(7);">7</button></td><td><button class="key-btn" ng-click="number_click(8);">8</button></td><td><button class="key-btn" ng-click="number_click(9);">9</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="key-btn key-ok" ng-click="product_in_insert();">확인</button></td><td><button class="key-btn" ng-click="number_click(0);">0</button></td><td><button class="key-btn key-cancel" ng-click="product_in_insert_cancle();">취소</button></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!--/ 키패드-->
+
+            <!--거래처 셀렉트-->
+            <div  class="select-detail" ng-show="company_list_show == 'yes'">
+                <ul class="list-unstyled select-list">
+                    <li ng-hide="company_list_none == 'data_none'" ng-repeat="company_list in company_list" ng-click="company_click(company_list.company_id,company_list.company_name);">{{company_list.company_name}}</li>
+                    <li ng-show="company_list_none == 'data_none'">회사가 존재하지 않습니다</li>
+                </ul>
+                <button class="btn btn-add" data-toggle="modal" data-target="#newModal2" ><i class="fa fa-plus-circle"> </i>  신규</button>
+                <button class="btn btn-sm btn-default btn-close btn-block center-block" ng-click="company_select('no')"><i class="fa fa-caret-up fa-lg"></i></button>
+            </div>
+            <!--/거래처 셀렉트-->
+
+
+
+        </div>
+    </div>
+
+
+
+    <!--검은 뒷배경--><div class="modal-backdrop fade in" style="height: 100%; z-index:900;" ng-show="stock_insert_background=='true'"> </div><!--/검은 뒷배경-->
+    <!--입력확인 01-->
+    <div class="alert-style" ng-show="stock_insert_view=='true'">
+        <p>"<span>{{product_name}}</span>"</p>
+        <p>"<span>{{product_count}}</span>개"</p>
+        <p>"단가<i class="fa fa-krw"> </i> <span> {{product_cost2}} </span>"</p>
+        <p>입고 사항을<br> 입력하시겠습니까?</p>
+        <hr>
+        <div class="col-xs-6 no-padding" style="padding-right:5px;">
+            <button class="btn btn-log btn-block" ng-click="stock_insert_go();">
+                확인
+            </button>
+        </div>
+        <div class="col-xs-6 no-padding" style="padding-left:5px;">
+            <button class="btn btn-cancel btn-block" ng-click="stock_insert_cancle();">
+                취소
+            </button>
+        </div>
+    </div>
+    <!--/입력확인 01-->
+
+
+    <div class="alert-style" ng-show="stock_insert_view=='success'">
+        <p>"<span>{{product_name}}</span>"</p>
+        <p>"<span>{{product_count}}</span>개"</p>
+        <p>"단가 <i class="fa fa-krw"> </i><span> {{product_cost2}} </span>"</p>
+        <p>입고사항 입력 완료</p>
+        <p>재고 : <span>{{stock_insert_go[0].product_count}}</span>개</p>
+        <hr>
+        <div class="col-xs-12 no-padding" style="padding-right:5px;">
+            <button class="btn btn-log btn-block" ng-click="stockList_go();">
+                확인
+            </button>
+        </div>
+
+    </div>
+
+
+
+    <!-- select -신규 업체 등록 모달 -->
+    <div class="modal fade" id="newModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content manu-md">
+                <div class="col-xs-12 m-header" style="overflow:hidden;">
+                    <p class="text-center md-title">
+                        신규 업체 등록
+                    </p>
+                </div>
+                <div class="modal-body modal-menu">
+                        <div class="form-group">
+                            <label for="insert_company_name" class="sr-only">업체명</label>
+                            <input type="text" class="form-control input-lg" id="insert_company_name" placeholder="업체명">
+                        </div>
+                        <div class="form-group">
+                            <label for="insert_company_call" class="sr-only">연락처</label>
+                            <input type="tel" class="form-control input-lg" id="insert_company_call" placeholder="예)010-1234-5678">
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-xs-6 no-padding" style="padding-right:5px;">
+                        <button class="btn btn-log btn-block" ng-click="company_insert_go();">
+                            확인
+                        </button>
+                    </div>
+                    <div class="col-xs-6 no-padding" style="padding-left:5px;">
+                        <button class="btn btn-cancel btn-block" data-dismiss="modal" id="company_insert_cancle">
+                            취소
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- /select -신규등록 모달 -->
+
+
+
+</div>

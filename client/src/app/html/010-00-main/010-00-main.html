@@ -1,0 +1,44 @@
+<div ng-controller="mainCtr">
+
+
+
+
+    <div class="c-wrap">
+        <div class="container main-contents">
+            <h2><span>{{member_name}}</span>님 안녕하세요</h2>
+            <div class="col-xs-4 main-padding">
+                <button class="btn btn-main btn-block" ng-click="stockList();"><i class="fa fa-pencil-square-o fa-3x"></i><br>입고 입력</button>
+                <span class="label label-danger label-n" ng-show="in_new[0].name !=='error'">N</span>
+            </div>
+            <div class="col-xs-4 main-padding">
+                <button class="btn btn-main btn-block" ng-click="releaseList();"><i class="fa fa-sign-out fa-3x"></i><br>출고 입력</button>
+                <span class="label label-danger label-n" ng-show="out_new[0].name !=='error'">N</span>
+            </div>
+            <!--<div class="col-xs-4 main-padding">
+                <button class="btn btn-main btn-block" ng-click="returnList();"><i class="fa fa-archive fa-3x"></i><br>반품 입력</button>
+            </div>-->
+            <div class="col-xs-4 main-padding">
+                <button class="btn btn-main btn-block" ng-click="inventoryList();"><i class="fa fa-book fa-3x"></i><br>재고 보기</button>
+            </div>
+            <div class="col-xs-4 main-padding">
+                <button class="btn btn-main btn-block" ng-click="inoutHistory01();"><i class="fa fa-history fa-3x"></i><br>출/입고 내역</button>
+                <span class="label label-danger label-n" ng-show="in_new[0].name !=='error' || out_new[0].name !=='error'">N</span>
+            </div>
+            <div class="col-xs-4 main-padding">
+                <button class="btn btn-main btn-block" ng-click="product_manager();"><i class="fa fa-cubes fa-3x"></i><br>물품 관리</button>
+
+            </div>
+            <div class="col-xs-4 main-padding">
+                <button class="btn btn-main btn-block" ng-click="company_manager();"><i class="fa fa-tasks fa-3x"></i><br>거래처 관리</button>
+
+            </div>
+            <div class="col-xs-12 main-padding" style="overflow:hidden;">
+                <button class="btn btn-main btn-lg btn-block" ng-click="notice();"><i class="fa fa-volume-up fa-lg"></i>  알림사항</button>
+                <span class="label label-danger label-n" ng-show="notice_new[0].name !=='error'">N</span>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
