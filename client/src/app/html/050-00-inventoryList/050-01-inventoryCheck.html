@@ -22,6 +22,24 @@
                         </tr>
                     </table>
                 </div>
+
+                <div class="in-history">
+                    <p class="his-title"><i class="fa fa-chevron-circle-right"></i> 입고(반품) 내역</p>
+                    <table class="table pd-list table-striped table-hover">
+                        <tr ng-repeat="in_return_list in product_in_return_info_list" data-toggle="modal" data-target="#insert-modal" ng-hide="product_in_return_info_list[0].name == 'error'" ng-click="list_click('in_return',in_return_list.product_move_info_id);">
+                            <td style="width:45%;">{{in_return_list.company_name}}</td><td style="width:35%;">{{in_return_list.insert_date.slice(0,10)}}</td><td style="width:20%;">{{in_return_list.move_count}}개</td>
+                        </tr>
+
+                        <tr ng-show="product_in_return_info_list[0].name == 'error'">
+                            <td colspan="10" style="text-align: center">입고(반품) 내역이 없습니다</td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <br><br><br>
+
+
                 <div class="in-history">
                     <p class="his-title"><i class="fa fa-chevron-circle-right"></i> 출고 내역</p>
                     <table class="table pd-list table-striped table-hover">
@@ -34,6 +52,22 @@
                         </tr>
                     </table>
                 </div>
+
+                <div class="in-history">
+                    <p class="his-title"><i class="fa fa-chevron-circle-right"></i> 출고(반품) 내역</p>
+                    <table class="table pd-list table-striped table-hover">
+                        <tr ng-repeat="out_return_list in product_out_return_info_list" data-toggle="modal" data-target="#insert-modal" ng-hide="product_out_return_info_list[0].name == 'error'" ng-click="list_click('out_return',out_return_list.product_move_info_id);">
+                            <td style="width:45%;">{{out_return_list.company_name}}</td><td style="width:35%;">{{out_return_list.insert_date.slice(0,10)}}</td><td style="width:20%;">{{out_return_list.move_count}}개</td>
+                        </tr>
+
+                        <tr ng-show="product_out_return_info_list[0].name == 'error'">
+                            <td colspan="10" style="text-align: center">출고(반품) 내역이 없습니다</td>
+                        </tr>
+                    </table>
+                </div>
+
+
+
             </div>
             <!--/ 물품 리스트-->
         </div>

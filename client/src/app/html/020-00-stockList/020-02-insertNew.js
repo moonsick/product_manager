@@ -125,7 +125,7 @@ angular.module('eventApp')
             if(insert_realay == 0){
                 insert_realay = 1;
                 executeResults.stock_insert_go(product_id[1],$("#company_id").val(),sessionStorage.getItem('member_id'),
-                    $scope.product_count, $scope.product_cost).then(function(data) {
+                    $scope.product_count, $scope.product_cost, $scope.in_mod_name).then(function(data) {
                         $scope.stock_insert_go = data;
                         $scope.stock_insert_background = 'true';
                         $scope.stock_insert_view = 'success';
@@ -205,20 +205,26 @@ angular.module('eventApp')
                     }
                 });
             }
-
-
-
-
-
         };
 
 
+        $scope.in_mod_name = '신규';
+
+        $scope.in_mod = function(mod){
+            $scope.product_mod = mod;
+        };
+
+
+        $scope.in_mod_click = function(mod){
+            $scope.in_mod_name = mod;
+            $scope.product_mod = 'no';
+        };
 
 
 
         $scope.product_in_insert_cancle = function(){
             window.location = "/";
-        }
+        };
 
 
     });

@@ -85,13 +85,13 @@ angular.module('eventApp')
 
 
 // 입고 입력 시작 stock_insert_go
-        executeResults.stock_insert_go= function (product_id,company_id,member_id,product_count,product_cost) {
+        executeResults.stock_insert_go= function (product_id,company_id,member_id,product_count,product_cost,mod) {
             var deferred = $q.defer();
             $http({
                     method: 'post',
                     url: '/stock_insert_go',
                     data: {product_id : product_id , company_id : company_id , member_id : member_id ,
-                                          product_count : product_count , product_cost : product_cost}
+                                          product_count : product_count , product_cost : product_cost, mod : mod}
                 }
             ).success(function (data) {
                     deferred.resolve(data.sending);
@@ -122,13 +122,13 @@ angular.module('eventApp')
 
 
 // 출고 입력 시작 release_insert_go
-        executeResults.release_insert_go= function (product_id,company_id,member_id,product_count,product_cost) {
+        executeResults.release_insert_go= function (product_id,company_id,member_id,product_count,product_cost,mod) {
             var deferred = $q.defer();
             $http({
                     method: 'post',
                     url: '/release_insert_go',
                     data: {product_id : product_id , company_id : company_id , member_id : member_id ,
-                        product_count : product_count , product_cost : product_cost}
+                        product_count : product_count , product_cost : product_cost , mod : mod}
                 }
             ).success(function (data) {
                     deferred.resolve(data.sending);
@@ -154,6 +154,23 @@ angular.module('eventApp')
             return deferred.promise;
         };
 
+// 물품의 입고(반품) 정보 list product_in_return_info_list
+        executeResults.product_in_return_info_list= function (product_id) {
+            var deferred = $q.defer();
+            $http({
+                    method: 'post',
+                    url: '/product_in_return_info_list',
+                    data: {product_id : product_id}
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+            return deferred.promise;
+        };
+
+
+
 
 
 // 물품의 출고 정보 list product_out_info_list
@@ -171,6 +188,24 @@ angular.module('eventApp')
             return deferred.promise;
         };
 
+// 물품의 출고(빈픔) 정보 list product_out_return_info_list
+        executeResults.product_out_return_info_list= function (product_id) {
+            var deferred = $q.defer();
+            $http({
+                    method: 'post',
+                    url: '/product_out_return_info_list',
+                    data: {product_id : product_id}
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+            return deferred.promise;
+        };
+
+
+
+
 
 // 금일 물품별 main list day_move_list
         executeResults.day_move_list= function () {
@@ -186,6 +221,25 @@ angular.module('eventApp')
             );
             return deferred.promise;
         };
+
+
+// 금일 물품별 main list day_move_list_return
+        executeResults.day_move_list_return= function () {
+            var deferred = $q.defer();
+            $http({
+                    method: 'post',
+                    url: '/day_move_list_return',
+                    data: { }
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+            return deferred.promise;
+        };
+
+
+
 
 
 
@@ -206,6 +260,23 @@ angular.module('eventApp')
         };
 
 
+// 금일 물품별 main list day_move_sub_list_return
+        executeResults.day_move_sub_list_return= function () {
+            var deferred = $q.defer();
+            $http({
+                    method: 'post',
+                    url: '/day_move_sub_list_return',
+                    data: { }
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+            return deferred.promise;
+        };
+
+
+
 
 
 
@@ -215,6 +286,21 @@ angular.module('eventApp')
             $http({
                     method: 'post',
                     url: '/day_move_out_list',
+                    data: { }
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+            return deferred.promise;
+        };
+
+// 금일 물품별 main list day_move_out_list_return
+        executeResults.day_move_out_list_return= function () {
+            var deferred = $q.defer();
+            $http({
+                    method: 'post',
+                    url: '/day_move_out_list_return',
                     data: { }
                 }
             ).success(function (data) {
@@ -242,6 +328,20 @@ angular.module('eventApp')
             return deferred.promise;
         };
 
+// 금일 물품별 main list day_move_out_sub_list_return
+        executeResults.day_move_out_sub_list_return= function () {
+            var deferred = $q.defer();
+            $http({
+                    method: 'post',
+                    url: '/day_move_out_sub_list_return',
+                    data: { }
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+            return deferred.promise;
+        };
 
 
 
@@ -262,6 +362,23 @@ angular.module('eventApp')
         };
 
 
+// 금일 물품별 main list day_move_company_list_return
+        executeResults.day_move_company_list_return= function () {
+            var deferred = $q.defer();
+            $http({
+                    method: 'post',
+                    url: '/day_move_company_list_return',
+                    data: { }
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+            return deferred.promise;
+        };
+
+
+
 
 
 // 금일 물품별 main list day_move_company_sub_list
@@ -270,6 +387,20 @@ angular.module('eventApp')
             $http({
                     method: 'post',
                     url: '/day_move_company_sub_list',
+                    data: { }
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+            return deferred.promise;
+        };
+// 금일 물품별 main list day_move_company_sub_list_return
+        executeResults.day_move_company_sub_list_return= function () {
+            var deferred = $q.defer();
+            $http({
+                    method: 'post',
+                    url: '/day_move_company_sub_list_return',
                     data: { }
                 }
             ).success(function (data) {
@@ -298,6 +429,23 @@ angular.module('eventApp')
             return deferred.promise;
         };
 
+// 금일 물품별 main list day_move_company_out_list_return
+        executeResults.day_move_company_out_list_return= function () {
+            var deferred = $q.defer();
+            $http({
+                    method: 'post',
+                    url: '/day_move_company_out_list_return',
+                    data: { }
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+            return deferred.promise;
+        };
+
+
+
 
 
 
@@ -315,6 +463,23 @@ angular.module('eventApp')
             );
             return deferred.promise;
         };
+
+
+// 금일 물품별 main list day_move_company_out_sub_list_return
+        executeResults.day_move_company_out_sub_list_return= function () {
+            var deferred = $q.defer();
+            $http({
+                    method: 'post',
+                    url: '/day_move_company_out_sub_list_return',
+                    data: { }
+                }
+            ).success(function (data) {
+                    deferred.resolve(data.sending);
+                }
+            );
+            return deferred.promise;
+        };
+
 
 
 

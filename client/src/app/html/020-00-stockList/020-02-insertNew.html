@@ -1,9 +1,12 @@
-<div ng-controller="insertNew_Ctr">
+<div ng-controller="insertNew_Ctr" xmlns="http://www.w3.org/1999/html">
 
 
     <div class="c-wrap">
         <div class="container sub-contents">
-            <h3 class="pd-insert-tt m-header" ng-click="stockList_go();"><i class="fa fa-caret-right"></i> <span>{{product_name}}</span> 입고</h3>
+            <h3 class="pd-insert-tt m-header" style="padding:7px;">
+                <span class="col-xs-1 no-padding"><i class="fa fa-caret-right"></i></span><span class="col-xs-8 no-padding" style="font-size:18px;"> <span ng-click="stockList_go();" >{{product_name}} 입고</span> </span>
+                <span ng-click="in_mod('yes')" class="col-xs-3 no-padding"><div class="select" style="margin:0; padding:6px 7px;"><p>{{in_mod_name}}<span class="pull-right"><i class="fa fa-caret-down" style="color:#666666;"></i></span></p></div></span>
+            </h3>
             <div class="select" ng-click="company_select('yes');"><p>{{company_name}}
                 <input id="company_id" value="false" class="hidden">
                 <span class="pull-right"><i class="fa fa-caret-down"></i></span></p></div>
@@ -37,6 +40,20 @@
 
             <!--/ 키패드-->
 
+
+            <!--신규/반품선택-->
+            <div ng-show="product_mod == 'yes'" class="select-detail s-l-sm">
+                <ul class="list-unstyled select-list text-center">
+                    <li ng-click="in_mod_click('신규');"><a href="#">신규</a></li>
+                    <li ng-click="in_mod_click('반품');"><a href="#">반품</a></li>
+                    </ul>
+            </div>
+            <!--/신규/반품선택-->
+
+
+
+
+
             <!--거래처 셀렉트-->
             <div  class="select-detail" ng-show="company_list_show == 'yes'">
                 <ul class="list-unstyled select-list">
@@ -47,6 +64,11 @@
                 <button class="btn btn-sm btn-default btn-close btn-block center-block" ng-click="company_select('no')"><i class="fa fa-caret-up fa-lg"></i></button>
             </div>
             <!--/거래처 셀렉트-->
+
+
+
+
+
 
 
 
@@ -61,7 +83,7 @@
         <p>"<span>{{product_name}}</span>"</p>
         <p>"<span>{{product_count}}</span>개"</p>
         <p>"단가<i class="fa fa-krw"> </i> <span> {{product_cost2}} </span>"</p>
-        <p>입고 사항을<br> 입력하시겠습니까?</p>
+        <p>입고({{in_mod_name}}) 사항을<br> 입력하시겠습니까?</p>
         <hr>
         <div class="col-xs-6 no-padding" style="padding-right:5px;">
             <button class="btn btn-log btn-block" ng-click="stock_insert_go();">
@@ -81,7 +103,7 @@
         <p>"<span>{{product_name}}</span>"</p>
         <p>"<span>{{product_count}}</span>개"</p>
         <p>"단가 <i class="fa fa-krw"> </i><span> {{product_cost2}} </span>"</p>
-        <p>입고사항 입력 완료</p>
+        <p>입고({{in_mod_name}}) 사항 입력 완료</p>
         <p>재고 : <span>{{stock_insert_go[0].product_count}}</span>개</p>
         <hr>
         <div class="col-xs-12 no-padding" style="padding-right:5px;">
